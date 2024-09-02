@@ -14,6 +14,11 @@ public class MainVeiw extends JPanel{
         setPreferredSize(new Dimension(1280, 800));
         setLayout(null);
 
+        experController = new Controller(this);
+        experController.setBounds(260, 85, 710, 700);
+        experController.setBorder(BorderFactory.createTitledBorder("Create"));
+        add(experController);
+
         menuPanel = new JPanel();
         menuPanel.setBounds(0, 0, 1280, 80);
         menuPanel.setBackground(Color.white);
