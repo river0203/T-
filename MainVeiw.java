@@ -7,6 +7,7 @@ public class MainVeiw extends JPanel{
 
     private Controller  experController;
     private JPanel      menuPanel, selectPanel, performancePanel;
+    private JButton[]   btnCircuitAry;
 
     public MainVeiw()
     {
@@ -30,7 +31,15 @@ public class MainVeiw extends JPanel{
         selectPanel.setBounds(0, 85, 250, 700);
         selectPanel.setBackground(Color.white);
         selectPanel.setBorder(BorderFactory.createTitledBorder("Select"));
+        selectPanel.setLayout(new GridLayout(8, 2));
         add(selectPanel);
+
+        btnCircuitAry = new JButton[8];
+        for(int i = 0; i < 8; i++)
+        {
+            btnCircuitAry[i] = new JButton();
+            selectPanel.add(btnCircuitAry[i]);
+        }
 
         performancePanel = new JPanel();
         performancePanel.setBounds(980, 85, 300, 700);

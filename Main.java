@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 public class Main {
     public static void main(String[] args)
     {
-        JFrame frame = new JFrame("SIMPLE PAINTER");
+        JFrame frame = new JFrame("T+");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
 
