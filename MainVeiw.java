@@ -8,6 +8,7 @@ public class MainVeiw extends JPanel{
     private Controller  experController;
     private JPanel      menuPanel, selectPanel, performancePanel;
     private JButton[]   btnCircuitAry;
+    private JButton[]   btnBoardArrangement;
 
     public MainVeiw()
     {
