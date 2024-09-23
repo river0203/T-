@@ -35,10 +35,27 @@ public class MainVeiw extends JPanel{
         selectPanel.setLayout(new GridLayout(8, 2));
         add(selectPanel);
 
-        btnCircuitAry = new JButton[8];
-        for(int i = 0; i < 8; i++)
+        btnCircuitAry = new JButton[9];
+
+        // 이미지 경로 배열 (경로를 알맞게 변경해야 합니다)
+        String[] imagePaths = {
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/Battery.png",
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/BatteryCase.png",
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/SwitchAry.png",
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/SwitchOff.png",
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/SwitchOn.png",
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/Wing.png",
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/line1.png",
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/line2.png",
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/line3.png"
+
+        };
+
+        // 각 버튼에 이미지를 설정
+        for(int i = 0; i < 9; i++)
         {
-            btnCircuitAry[i] = new JButton();
+            ImageIcon icon = new ImageIcon(imagePaths[i]);  // 이미지 경로로 아이콘 생성
+            btnCircuitAry[i] = new JButton(icon);          // 아이콘을 버튼에 추가
             selectPanel.add(btnCircuitAry[i]);
         }
 
