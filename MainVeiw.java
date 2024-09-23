@@ -7,6 +7,7 @@ public class MainVeiw extends JPanel{
 
     private Controller  experController;
     private JPanel      menuPanel, selectPanel, performancePanel;
+    static private JPanel imgExPanel;
     private JButton[]   btnCircuitAry;
     private JButton[]   btnBoardArrangement;
 
@@ -20,6 +21,7 @@ public class MainVeiw extends JPanel{
         experController.setBounds(260, 85, 710, 700);
         experController.setBorder(BorderFactory.createTitledBorder("Create"));
         add(experController);
+        add(imgExPanel);
 
         menuPanel = new JPanel();
         menuPanel.setBounds(0, 0, 1280, 80);
