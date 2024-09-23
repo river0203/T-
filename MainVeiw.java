@@ -28,6 +28,23 @@ public class MainVeiw extends JPanel{
         menuPanel.setLayout(new GridLayout(1, 4));
         add(menuPanel);
 
+        btnBoardArrangement = new JButton[5];
+
+        String[] menuImgPath = {
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/menu_logo.jpg",
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/menu1.jpg",
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/menu2.jpg",
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/menu3.jpg",
+                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/menu4.jpg"
+        };
+
+        for(int i = 0; i < 5; i++)
+        {
+            ImageIcon icon = new ImageIcon(menuImgPath[i]);  // 이미지 경로로 아이콘 생성
+            btnBoardArrangement[i] = new JButton(icon);
+            menuPanel.add(btnBoardArrangement[i]);
+        }
+
         selectPanel = new JPanel();
         selectPanel.setBounds(0, 85, 250, 700);
         selectPanel.setBackground(Color.white);
