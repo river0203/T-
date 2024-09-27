@@ -25,6 +25,8 @@ public class MainVeiw extends JPanel {
         experController.setBorder(BorderFactory.createTitledBorder("Create"));
         experController.setLayout(null);  // 자유롭게 컴포넌트 위치 설정을 위해 null layout 사용
         experController.setTransferHandler(new ImageTransferHandler());  // 이미지 드래그 앤 드롭을 위한 TransferHandler 설정
+        experController.setFocusable(true);  // 패널에 포커스를 맞춰 이벤트 처리
+        experController.requestFocusInWindow();
         add(experController);
 
         // Menu Panel 설정

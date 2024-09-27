@@ -16,15 +16,21 @@ public class Controller extends JPanel {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+        // null 레이아웃 설정하여 드래그 앤 드롭한 컴포넌트를 자유롭게 배치할 수 있도록 함
+        setLayout(null);
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // 이미지가 있을 때만 그리기
+        // 배경 이미지를 먼저 그림
         if (image != null) {
             g.drawImage(image, 0, 0, this.getWidth(), this.getHeight(), this);
         }
+
+        // 이미지를 그리고 나서 다른 컴포넌트들이 그 위에 그려질 수 있도록 함
+        super.paintComponents(g);
     }
 }
