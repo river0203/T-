@@ -1,11 +1,9 @@
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
-import java.awt.datatransfer.*;
+import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.*;
 import java.awt.event.*;
-import java.io.File;
-import java.util.List;
 
 public class MainVeiw extends JPanel {
 
@@ -13,6 +11,7 @@ public class MainVeiw extends JPanel {
     private JPanel menuPanel, selectPanel, performancePanel;
     private JButton[] btnCircuitAry;
     private JButton[] btnBoardArrangement;
+    private JLayeredPane layeredPane;
 
     public MainVeiw() {
         setBackground(Color.white);
@@ -20,14 +19,11 @@ public class MainVeiw extends JPanel {
         setLayout(null);
 
         // experController에 이미지를 표시하고 그 위에 추가 이미지를 배치할 수 있도록 null layout 설정
-        experController = new Controller(this);
-        experController.setBounds(260, 85, 710, 700);
-        experController.setBorder(BorderFactory.createTitledBorder("Create"));
-        experController.setLayout(null);  // 자유롭게 컴포넌트 위치 설정을 위해 null layout 사용
-        experController.setTransferHandler(new ImageTransferHandler());  // 이미지 드래그 앤 드롭을 위한 TransferHandler 설정
-        experController.setFocusable(true);  // 패널에 포커스를 맞춰 이벤트 처리
-        experController.requestFocusInWindow();
-        add(experController);
+        layeredPane = new JLayeredPane();
+        layeredPane.setBounds(260, 85, 710, 700);
+        layeredPane.setBorder(BorderFactory.createTitledBorder("Create"));
+        layeredPane.setLayout(null);  // 자유롭게 컴포넌트 위치 설정을 위해 null layout 사용
+        add(layeredPane);
 
         // Menu Panel 설정
         menuPanel = new JPanel();
@@ -79,12 +75,12 @@ public class MainVeiw extends JPanel {
         for (int i = 0; i < 9; i++) {
             ImageIcon icon = new ImageIcon(imagePaths[i]);  // 이미지 경로로 아이콘 생성
             btnCircuitAry[i] = new JButton(icon);          // 아이콘을 버튼에 추가
-            btnCircuitAry[i].setTransferHandler(new TransferHandler("icon"));
-            btnCircuitAry[i].addMouseMotionListener(new MouseAdapter() {
-                public void mouseDragged(MouseEvent e) {
-                    JComponent comp = (JComponent) e.getSource();
-                    TransferHandler handler = comp.getTransferHandler();
-                    handler.exportAsDrag(comp, e, TransferHandler.COPY);
+            btnCircuitAry[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JButton source = (JButton) e.getSource();
+                    ImageIcon buttonIcon = (ImageIcon) source.getIcon();
+                    addImageToLayeredPane(buttonIcon);
                 }
             });
             selectPanel.add(btnCircuitAry[i]);
@@ -97,6 +93,42 @@ public class MainVeiw extends JPanel {
         add(performancePanel);
     }
 
+    // 버튼 클릭 시 호출되는 메소드로 이미지를 JLayeredPane에 추가
+    private void addImageToLayeredPane(ImageIcon icon) {
+        JLabel imageLabel = new JLabel(icon);
+        imageLabel.setBounds(100, 100, icon.getIconWidth(), icon.getIconHeight());  // 원하는 위치와 크기 설정
+
+        // 마우스 드래그 리스너 추가
+        imageLabel.addMouseListener(new MouseAdapter() {
+            Point initialClick;
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                initialClick = e.getPoint();
+            }
+        });
+
+        imageLabel.addMouseMotionListener(new MouseMotionAdapter() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                // 이미지의 현재 위치를 가져옴
+                int xMoved = e.getX() - imageLabel.getWidth() / 2;
+                int yMoved = e.getY() - imageLabel.getHeight() / 2;
+
+                // 새 위치 계산
+                int x = imageLabel.getX() + xMoved;
+                int y = imageLabel.getY() + yMoved;
+                imageLabel.setLocation(x, y);
+            }
+        });
+
+        // 이미지를 레이어에 추가
+        layeredPane.add(imageLabel, JLayeredPane.PALETTE_LAYER);
+        layeredPane.repaint();
+        layeredPane.revalidate();
+    }
+
+    // 이미지 드래그 앤 드롭을 위한 TransferHandler 설정
     private class ImageTransferHandler extends TransferHandler {
 
         @Override
@@ -119,9 +151,9 @@ public class MainVeiw extends JPanel {
 
                 // 드롭한 위치에 이미지 레이블 추가
                 label.setBounds(dropLocation.x, dropLocation.y, icon.getIconWidth(), icon.getIconHeight());
-                experController.add(label);
-                experController.revalidate();
-                experController.repaint();
+                layeredPane.add(label, JLayeredPane.PALETTE_LAYER);
+                layeredPane.revalidate();
+                layeredPane.repaint();
                 return true;
             } catch (Exception ex) {
                 ex.printStackTrace();
