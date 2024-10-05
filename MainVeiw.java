@@ -23,6 +23,12 @@ public class MainVeiw extends JPanel {
         layeredPane.setBounds(260, 85, 710, 700);
         layeredPane.setBorder(BorderFactory.createTitledBorder("Create"));
         layeredPane.setLayout(null);  // 자유롭게 컴포넌트 위치 설정을 위해 null layout 사용
+
+        // 배경 이미지 설정
+        ImageIcon backgroundImage = new ImageIcon("/Users/iseungbin/Documents/GitHub/T-/ImageResource/BackGround.jpg");
+        JLabel backgroundLabel = new JLabel(backgroundImage);
+        backgroundLabel.setBounds(0, 0, 710, 700);  // layeredPane 크기에 맞게 배경 이미지 설정
+        layeredPane.add(backgroundLabel, JLayeredPane.DEFAULT_LAYER);  // 기본 레이어에 배경 이미지 추가
         add(layeredPane);
 
         // Menu Panel 설정
@@ -122,7 +128,7 @@ public class MainVeiw extends JPanel {
             }
         });
 
-        // 이미지를 레이어에 추가
+        // 이미지를 PALETTE_LAYER에 추가하여 배경 위에 표시
         layeredPane.add(imageLabel, JLayeredPane.PALETTE_LAYER);
         layeredPane.repaint();
         layeredPane.revalidate();
