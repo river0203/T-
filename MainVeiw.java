@@ -104,16 +104,20 @@ public class MainVeiw extends JPanel {
         JLabel imageLabel = new JLabel(icon);
         imageLabel.setBounds(100, 100, icon.getIconWidth(), icon.getIconHeight());  // 원하는 위치와 크기 설정
 
-        // 마우스 드래그 리스너 추가
+        // 마우스 클릭 시 이미지의 가로 크기를 5픽셀씩 줄이는 리스너 추가
         imageLabel.addMouseListener(new MouseAdapter() {
-            Point initialClick;
-
             @Override
             public void mousePressed(MouseEvent e) {
-                initialClick = e.getPoint();
+                // 이미지의 현재 크기 가져오기
+                int currentWidth = imageLabel.getWidth();
+                int currentHeight = imageLabel.getHeight();
+
+                // 가로 크기를 5픽셀 줄이고 세로 크기는 그대로 유지
+                imageLabel.setSize(currentWidth - 5, currentHeight);
             }
         });
 
+        // 마우스로 드래그 리스너 추가 (위치 이동)
         imageLabel.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
