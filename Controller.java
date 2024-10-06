@@ -12,7 +12,7 @@ public class Controller extends JPanel {
     public Controller(MainVeiw mainVeiw) {
         try {
             // 이미지 파일 로드 (파일 경로를 절대경로 또는 상대경로로 수정)
-            image = ImageIO.read(new File("/Users/iseungbin/Documents/GitHub/T-/ImageResource/BackGround.jpg"));
+            image = ImageIO.read(new File("C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\BackGround.jpg"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }

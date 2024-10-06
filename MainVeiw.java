@@ -27,7 +27,7 @@ public class MainVeiw extends JPanel {
         layeredPane.setLayout(null);  // 자유롭게 컴포넌트 위치 설정을 위해 null layout 사용
 
         // 배경 이미지 설정
-        ImageIcon backgroundImage = new ImageIcon("/Users/iseungbin/Documents/GitHub/T-/ImageResource/BackGround.jpg");
+        ImageIcon backgroundImage = new ImageIcon("C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\BackGround.jpg");
         JLabel backgroundLabel = new JLabel(backgroundImage);
         backgroundLabel.setBounds(0, 0, 710, 700);  // layeredPane 크기에 맞게 배경 이미지 설정
         layeredPane.add(backgroundLabel, JLayeredPane.DEFAULT_LAYER);  // 기본 레이어에 배경 이미지 추가
@@ -44,11 +44,11 @@ public class MainVeiw extends JPanel {
         btnBoardArrangement = new JButton[5];
 
         String[] menuImgPath = {
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/menu_logo.jpg",
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/menu1.jpg",
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/menu2.jpg",
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/menu3.jpg",
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/menu4.jpg"
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\menu_logo.jpg",
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\menu1.jpg",
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\menu2.jpg",
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\menu3.jpg",
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\menu4.jpg"
         };
 
         // 첫 번째 버튼에 Undo 기능 추가
@@ -78,15 +78,15 @@ public class MainVeiw extends JPanel {
         btnCircuitAry = new JButton[9];
 
         String[] imagePaths = {
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/Battery.png",
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/BatteryCase.png",
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/SwitchAry.png",
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/SwitchOff.png",
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/SwitchOn.png",
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/Wing.png",
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/line1.png",
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/line2.png",
-                "/Users/iseungbin/Documents/GitHub/T-/ImageResource/line3.png"
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\Battery.png",
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\BatteryCase.png",
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\SwitchAry.png",
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\SwitchOff.png",
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\SwitchOn.png",
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\Wing.png",
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\line1.png",
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\line2.png",
+                "C:\\Users\\aspp3\\OneDrive\\문서\\GitHub\\T-\\ImageResource\\line3.png"
         };
 
         // 각 버튼에 이미지를 설정
