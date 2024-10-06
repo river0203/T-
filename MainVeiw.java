@@ -4,6 +4,7 @@ import javax.swing.border.Border;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.*;
 import java.awt.event.*;
+import java.util.Stack;
 
 public class MainVeiw extends JPanel {
 
@@ -12,6 +13,7 @@ public class MainVeiw extends JPanel {
     private JButton[] btnCircuitAry;
     private JButton[] btnBoardArrangement;
     private JLayeredPane layeredPane;
+    private Stack<ImageState> undoStack = new Stack<>();  // Undo 기능을 위한 스택
 
     public MainVeiw() {
         setBackground(Color.white);
@@ -49,7 +51,17 @@ public class MainVeiw extends JPanel {
                 "/Users/iseungbin/Documents/GitHub/T-/ImageResource/menu4.jpg"
         };
 
-        for (int i = 0; i < 5; i++) {
+        // 첫 번째 버튼에 Undo 기능 추가
+        btnBoardArrangement[0] = new JButton(new ImageIcon(menuImgPath[0]));
+        btnBoardArrangement[0].addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                undoLastAction();  // Undo 기능 실행
+            }
+        });
+        menuPanel.add(btnBoardArrangement[0]);
+
+        for (int i = 1; i < 5; i++) {
             ImageIcon icon = new ImageIcon(menuImgPath[i]);  // 이미지 경로로 아이콘 생성
             btnBoardArrangement[i] = new JButton(icon);
             menuPanel.add(btnBoardArrangement[i]);
@@ -104,10 +116,13 @@ public class MainVeiw extends JPanel {
         JLabel imageLabel = new JLabel(icon);
         imageLabel.setBounds(100, 100, icon.getIconWidth(), icon.getIconHeight());  // 원하는 위치와 크기 설정
 
-        // 마우스 클릭 시 이미지의 가로 크기를 5픽셀씩 줄이는 리스너 추가
+        // 마우스 클릭 시 이미지의 상태를 저장하고 가로 크기를 5픽셀씩 줄이는 리스너 추가
         imageLabel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                // 현재 이미지 상태 저장
+                undoStack.push(new ImageState(imageLabel.getBounds(), imageLabel.getSize()));
+
                 // 이미지의 현재 크기 가져오기
                 int currentWidth = imageLabel.getWidth();
                 int currentHeight = imageLabel.getHeight();
@@ -136,6 +151,42 @@ public class MainVeiw extends JPanel {
         layeredPane.add(imageLabel, JLayeredPane.PALETTE_LAYER);
         layeredPane.repaint();
         layeredPane.revalidate();
+    }
+
+    // Undo 기능: 이전 상태로 되돌리기
+    private void undoLastAction() {
+        if (!undoStack.isEmpty()) {
+            ImageState previousState = undoStack.pop();
+            for (Component comp : layeredPane.getComponents()) {
+                if (comp instanceof JLabel) {
+                    JLabel label = (JLabel) comp;
+                    label.setBounds(previousState.getBounds());
+                    label.setSize(previousState.getSize());
+                    layeredPane.repaint();
+                    layeredPane.revalidate();
+                    break;
+                }
+            }
+        }
+    }
+
+    // 이미지 상태를 저장하는 클래스
+    private class ImageState {
+        private Rectangle bounds;
+        private Dimension size;
+
+        public ImageState(Rectangle bounds, Dimension size) {
+            this.bounds = bounds;
+            this.size = size;
+        }
+
+        public Rectangle getBounds() {
+            return bounds;
+        }
+
+        public Dimension getSize() {
+            return size;
+        }
     }
 
     // 이미지 드래그 앤 드롭을 위한 TransferHandler 설정
