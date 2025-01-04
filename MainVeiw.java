@@ -7,6 +7,8 @@ import java.awt.dnd.*;
 import java.awt.event.*;
 import java.util.Stack;
 
+//TODO 각 활동 구역 나누기
+
 public class MainVeiw extends JPanel {
 
     private JPanel menuPanel;
