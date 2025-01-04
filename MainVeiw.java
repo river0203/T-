@@ -11,7 +11,7 @@ import java.util.Stack;
 
 public class MainVeiw extends JPanel {
 
-    private JPanel menuPanel;
+    private JPanel menuPanel, laboratoryPanel, sideBarPanel;
     private JButton[] btnMenuArray;
 
     public MainVeiw() {
@@ -36,6 +36,20 @@ public class MainVeiw extends JPanel {
             btnMenuArray[i].addActionListener(new MenuListener());
             menuPanel.add(btnMenuArray[i]);
         }
+
+        sideBarPanel = new JPanel();
+        sideBarPanel.setBounds(10, 120, 350,660);
+        sideBarPanel.setBackground(Color.white);
+        sideBarPanel.setBorder(BorderFactory.createTitledBorder("Side Bar"));
+        sideBarPanel.setLayout(new GridLayout(5, 1));
+        add(sideBarPanel);
+
+        laboratoryPanel = new JPanel();
+        laboratoryPanel.setBounds(370, 120, 900,660);
+        laboratoryPanel.setBackground(Color.white);
+        laboratoryPanel.setBorder(BorderFactory.createTitledBorder("Laboratory"));
+        add(laboratoryPanel);
+
     }
 
     private class HoveringListener implements MouseListener
