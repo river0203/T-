@@ -3,8 +3,10 @@ import java.awt.*;
 public class Contants {
 
     static final public String BUTTON[] = {
-            "LOGO", "UNDO", "REDO", "CLEAR", "LINE", "BATTERY", "BATTERY HOLDER", "SWITCH",
-            "MOTOR", "REGISER", "WING"
+            "LOGO", "UNDO", "GO", "BACK", "TURN"
+    };
+    static final public String LOGIC[]={
+            "BATTERY", "BATTERY HOLDER", "SWITCH", "MOTOR", "REGISER", "WING", "LINE"
     };
     static final public Color HOVERING[] = {
             Color.white, Color.black, Color.yellow, Color.red
@@ -12,7 +14,7 @@ public class Contants {
 
     static final public int LOGO    = 0;
     static final public int UNDO    = 1;
-    static final public int FOWARD    = 2;
+    static final public int GO    = 2;
     static final public int BACK   = 3;
     static final public int TURN    = 4;
 
