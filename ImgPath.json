@@ -1,0 +1,19 @@
+{
+  "MenuImgPath" : {
+    "menu1" : "Draw/menu1.png",
+    "menu2" : "Draw/menu2.png",
+    "menu3" : "Draw/menu3.png",
+    "menu4" : "Draw/menu4.png",
+    "menuLOGO" : "Draw/menuLOGO.png"
+  },
+  "LogicImgPath" : {
+    "Logic1" : "Draw/Logic1.png",
+    "Logic2" : "Draw/Logic2.png",
+    "Logic3" : "Draw/Logic3.png",
+    "Logic4" : "Draw/Logic4.png",
+    "Logic5" : "Draw/Logic5.png",
+    "Logic6" : "Draw/Logic6.png",
+    "Logic7" : "Draw/Logic7.png",
+    "Logic8" : "Draw/Logic8.png"
+  }
+}
