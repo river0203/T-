@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-//TODO 각 활동 구역 나누기
+//TODO 이미지 버튼에 넣기 Img-management branch 우선
 
 public class MainVeiw extends JPanel {
 
