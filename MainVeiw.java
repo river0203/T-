@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class MainVeiw extends JPanel {
 
     private JPanel menuPanel, laboratoryPanel, sideBarPanel;
-    private JButton[] btnMenuArray;
+    private JButton[] btnMenuArray, btnLogicArray;
 
 
     public MainVeiw() {
@@ -39,6 +39,17 @@ public class MainVeiw extends JPanel {
         sideBarPanel.setBorder(BorderFactory.createTitledBorder("Side Bar"));
         sideBarPanel.setLayout(new GridLayout(5, 1));
         add(sideBarPanel);
+
+        btnLogicArray = new JButton[6];
+        for(int i = 0; i < 6; i++)
+        {
+            btnLogicArray[i] = new JButton(Contants.LOGIC[i]);
+            btnLogicArray[i].setBackground(Contants.HOVERING[0]);
+            btnLogicArray[i].setForeground(Contants.HOVERING[1]);
+            btnLogicArray[i].addMouseListener(new HoveringListener());
+            btnLogicArray[i].addActionListener(new MenuListener());
+            sideBarPanel.add(btnLogicArray[i]);
+        }
 
         laboratoryPanel = new JPanel(){
             @Override
