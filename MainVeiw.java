@@ -47,7 +47,7 @@ public class MainVeiw extends JPanel {
             btnLogicArray[i].setBackground(Contants.HOVERING[0]);
             btnLogicArray[i].setForeground(Contants.HOVERING[1]);
             btnLogicArray[i].addMouseListener(new HoveringListener());
-            btnLogicArray[i].addActionListener(new MenuListener());
+            btnLogicArray[i].addMouseListener(new SideBarListener());
             sideBarPanel.add(btnLogicArray[i]);
         }
 
@@ -72,7 +72,35 @@ public class MainVeiw extends JPanel {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-
+            JButton presentButton =(JButton) e.getSource();
+            if(presentButton == btnLogicArray[0])
+            {
+                System.out.println("Button 0");
+            }
+            else if(presentButton == btnLogicArray[1])
+            {
+                System.out.println("Button 1");
+            }
+            else if(presentButton == btnLogicArray[2])
+            {
+                System.out.println("Button 2");
+            }
+            else if(presentButton == btnLogicArray[3])
+            {
+                System.out.println("Button 3");
+            }
+            else if(presentButton == btnLogicArray[4])
+            {
+                System.out.println("Button 4");
+            }
+            else if(presentButton == btnLogicArray[5])
+            {
+                System.out.println("Button 5");
+            }
+            else
+            {
+                System.out.println("Default");
+            }
         }
 
         @Override
@@ -102,6 +130,35 @@ public class MainVeiw extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             Object obj = e.getSource();
+        }
+    }
+
+    private class SideBarListener implements MouseListener
+    {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
         }
     }
 }
