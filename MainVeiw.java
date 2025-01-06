@@ -12,7 +12,7 @@ import java.util.Stack;
 public class MainVeiw extends JPanel {
 
     private JPanel menuPanel, laboratoryPanel, sideBarPanel;
-    private JButton[] btnMenuArray;
+    private JButton[] btnMenuArray, btnLogicArray;
 
     public MainVeiw() {
         setBackground(Color.white);
@@ -41,8 +41,19 @@ public class MainVeiw extends JPanel {
         sideBarPanel.setBounds(10, 120, 350,660);
         sideBarPanel.setBackground(Color.white);
         sideBarPanel.setBorder(BorderFactory.createTitledBorder("Side Bar"));
-        sideBarPanel.setLayout(new GridLayout(5, 1));
+        sideBarPanel.setLayout(new GridLayout(7, 1));
         add(sideBarPanel);
+
+        btnLogicArray = new JButton[6];
+        for(int i = 0; i < 6; i++)
+        {
+            btnLogicArray[i] = new JButton(Contants.LOGIC[i]);
+            btnLogicArray[i].setBackground(Contants.HOVERING[0]);
+            btnLogicArray[i].setForeground(Contants.HOVERING[1]);
+            btnLogicArray[i].addMouseListener(new HoveringListener());
+            btnLogicArray[i].addActionListener(new MenuListener());
+            sideBarPanel.add(btnLogicArray[i]);
+        }
 
         laboratoryPanel = new JPanel();
         laboratoryPanel.setBounds(370, 120, 900,660);
