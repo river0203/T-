@@ -1,18 +1,17 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import org.json.*;
 
 //TODO 이미지 버튼에 넣기 Img-management branch 우선
 
-public class MainVeiw extends JPanel {
+public class MainView extends JPanel {
 
     private JPanel menuPanel, laboratoryPanel, sideBarPanel;
     private JButton[] btnMenuArray, btnLogicArray;
     private String readJsonPath;
 
 
-    public MainVeiw() {
+    public MainView() {
         setBackground(Color.white);
         setPreferredSize(new Dimension(1280, 800));
         setLayout(null);
