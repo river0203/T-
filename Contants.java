@@ -14,8 +14,8 @@ public class Contants {
 
     static final public int LOGO    = 0;
     static final public int UNDO    = 1;
-    static final public int FOWARD    = 2;
-    static final public int BACK   = 3;
+    static final public int FOWARD  = 2;
+    static final public int BACK    = 3;
     static final public int TURN    = 4;
 
     //circuit btn mapping
@@ -26,4 +26,6 @@ public class Contants {
     static final public int MOTOR   = 9;
     static final public int REGIS   = 10;
     static final public int WING    = 11;
+
+    static final public int NONE    = 12;
 }
