@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import org.json.*;
 
 //TODO 이미지 버튼에 넣기 Img-management branch 우선
 
@@ -8,6 +9,7 @@ public class MainVeiw extends JPanel {
 
     private JPanel menuPanel, laboratoryPanel, sideBarPanel;
     private JButton[] btnMenuArray, btnLogicArray;
+    private String readJsonPath;
 
 
     public MainVeiw() {
